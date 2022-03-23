@@ -18,7 +18,9 @@ public class DetalleComprobante implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@Id
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(columnDefinition = "serial")
 	private Long id_detalle_comprobante;
 	

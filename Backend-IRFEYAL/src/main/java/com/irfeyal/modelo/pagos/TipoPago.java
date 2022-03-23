@@ -12,9 +12,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "tipo_pago")
+
 public class TipoPago implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")

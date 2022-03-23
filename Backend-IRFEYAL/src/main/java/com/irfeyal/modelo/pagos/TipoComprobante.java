@@ -18,8 +18,10 @@ public class TipoComprobante {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(columnDefinition = "serial")
 	private Long id_tipo_comprobante;
+	
 	@Column
 	private String concepto_pago;
 	
