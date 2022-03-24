@@ -29,9 +29,11 @@ public class Asistencia implements Serializable {
 
 	@Column(name = "num_faltas")
 	private int numFaltas;
+	
 	@JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Clase idClase;
+	
 	@JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Estudiante id_estudiante;
