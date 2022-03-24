@@ -1,6 +1,5 @@
 package com.irfeyal.modelo.pagos;
 
-import java.awt.Image;
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -28,7 +27,7 @@ public class Comprobante implements Serializable {
 	private Long id_comprobante;
 
 	private Date fecha;
-	private Image imagen;
+	private String imagen;
 	private float valor_total;
 	private boolean estado;
 
@@ -52,7 +51,7 @@ public class Comprobante implements Serializable {
 
 	}
 
-	public Comprobante(Long id_comprobante, Date fecha, Image imagen, float valor_total, boolean estado,
+	public Comprobante(Long id_comprobante, Date fecha, String imagen, float valor_total, boolean estado,
 			Matricula id_matricula, RolUsuario id_rol_usuario, TipoComprobante id_tipo_comprobante,
 			TipoPago id_tipo_pago) {
 		this.id_comprobante = id_comprobante;
@@ -82,11 +81,11 @@ public class Comprobante implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public Image getImagen() {
+	public String getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(Image imagen) {
+	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
 

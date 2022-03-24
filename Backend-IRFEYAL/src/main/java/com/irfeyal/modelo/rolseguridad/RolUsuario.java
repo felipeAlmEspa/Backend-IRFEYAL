@@ -11,7 +11,7 @@ public class RolUsuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
-	private Long id_ro_usuario;
+	private Long id_rol_usuario;
 
 	private Boolean estado;
 
@@ -31,12 +31,12 @@ public class RolUsuario implements Serializable {
 	public RolUsuario() {
 	}
 
-	public Long getid_ro_usuario() {
-		return this.id_ro_usuario;
+	public Long getid_rol_usuario() {
+		return this.id_rol_usuario;
 	}
 
-	public void setid_ro_usuario(Long id_ro_usuario) {
-		this.id_ro_usuario = id_ro_usuario;
+	public void setid_rol_usuario(Long id_rol_usuario) {
+		this.id_rol_usuario = id_rol_usuario;
 	}
 
 	public Boolean getEstado() {

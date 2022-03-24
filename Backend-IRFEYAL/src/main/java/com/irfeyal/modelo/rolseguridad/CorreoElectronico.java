@@ -3,7 +3,6 @@ package com.irfeyal.modelo.rolseguridad;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 @Entity
 @Table(name="correo_electronico")
 public class CorreoElectronico implements Serializable {

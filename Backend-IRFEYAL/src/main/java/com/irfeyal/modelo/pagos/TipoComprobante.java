@@ -1,5 +1,8 @@
 package com.irfeyal.modelo.pagos;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,38 +12,40 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 @Entity
-@Table(name="tipo_comprobante")
-public class TipoComprobante {
-	
+@Table(name = "tipo_comprobante")
+public class TipoComprobante implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(columnDefinition = "serial")
 	private Long id_tipo_comprobante;
-	
+
 	@Column
 	private String concepto_pago;
-	
+
 	@OneToMany()
 	@JoinColumn(name = "id_periodo")
-	private Periodo id_periodo;
-	
+	private List<Periodo> id_periodo;
+
 	@OneToMany()
-	@JoinColumn(name = "id_kit")
-	private Kit kit;
+	@JoinColumn(name = "kit_id")
+	private List<Kit> kit_id;
 
 	public TipoComprobante() {
-		
+
 	}
-	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, Periodo id_periodo, Kit kit) {
+
+	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, List<Periodo> id_periodo, List<Kit> kit_id) {
+		super();
 		this.id_tipo_comprobante = id_tipo_comprobante;
 		this.concepto_pago = concepto_pago;
 		this.id_periodo = id_periodo;
-		this.kit = kit;
+		this.kit_id = kit_id;
 	}
 
 	public Long getIdTipoComprobante() {
@@ -59,20 +64,20 @@ public class TipoComprobante {
 		this.concepto_pago = concepto_pago;
 	}
 
-	public Periodo getPeriodo() {
+	public List<Kit> getKit() {
+		return kit_id;
+	}
+
+	public void setKit(List<Kit> kit_id) {
+		this.kit_id = kit_id;
+	}
+
+	public List<Periodo> getId_periodo() {
 		return id_periodo;
 	}
 
-	public void setPeriodo(Periodo id_periodo) {
+	public void setId_periodo(List<Periodo> id_periodo) {
 		this.id_periodo = id_periodo;
 	}
 
-	public Kit getKit() {
-		return kit;
-	}
-
-	public void setKit(Kit kit) {
-		this.kit = kit;
-	}
-	
 }

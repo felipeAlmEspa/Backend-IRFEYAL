@@ -1,6 +1,5 @@
 package com.irfeyal.modelo.documentosacademicos;
 
-
 import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Column;
@@ -11,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.irfeyal.modelo.parametrizacionacademica.CursoParalelo;
 import com.irfeyal.modelo.parametrizacionacademica.Horario;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
@@ -42,9 +43,12 @@ public class PlanUnidad implements Serializable{
 	@JoinColumn (name = "id_horario")
 	private Horario id_horario;
 	
+	//----------------
 	@ManyToOne
-	@JoinColumn (name = "id_curso")
-	private CursoParalelo cursoparalelo;
+	@JoinColumn (name = "id_curso_paralelo")
+	private CursoParalelo id_curso_paralelo;
+	
+	//----------------
 	
 	@ManyToOne
 	@JoinColumn (name = "id_modalidad")
@@ -59,7 +63,7 @@ public class PlanUnidad implements Serializable{
 
 	public PlanUnidad(Long id_plan_unidad, String titulo_unidad, String objetivos, String contenidos, String criterios_evaluacion,
 			String destrezas, Date fecha_inicio, Date fecha_fin, String estado, Unidad unidad, Horario id_horario,
-			CursoParalelo cursoparalelo, Modalidad id_modalidad, Periodo id_periodo) {
+			CursoParalelo id_curso_paralelo, Modalidad id_modalidad, Periodo id_periodo) {
 		super();
 		this.id_plan_unidad = id_plan_unidad;
 		this.titulo_unidad = titulo_unidad;
@@ -72,7 +76,7 @@ public class PlanUnidad implements Serializable{
 		this.estado = estado;
 		this.unidad = unidad;
 		this.id_horario = id_horario;
-		this.cursoparalelo = cursoparalelo;
+		this.id_curso_paralelo = id_curso_paralelo;
 		this.id_modalidad = id_modalidad;
 		this.id_periodo = id_periodo;
 	}
@@ -165,12 +169,12 @@ public class PlanUnidad implements Serializable{
 		this.id_horario = id_horario;
 	}
 
-	public CursoParalelo getCursoparalelo() {
-		return cursoparalelo;
+	public CursoParalelo getid_curso_paralelo() {
+		return id_curso_paralelo;
 	}
 
-	public void setCursoparalelo(CursoParalelo cursoparalelo) {
-		this.cursoparalelo = cursoparalelo;
+	public void setid_curso_paralelo(CursoParalelo id_curso_paralelo) {
+		this.id_curso_paralelo = id_curso_paralelo;
 	}
 
 	public Modalidad getModalidad() {
