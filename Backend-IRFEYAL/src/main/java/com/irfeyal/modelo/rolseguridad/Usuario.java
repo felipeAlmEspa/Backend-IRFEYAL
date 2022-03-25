@@ -14,9 +14,13 @@ import java.util.List;
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+
+	
+	
 	@Id
-	@Column(name="id_usuario")
-	private Integer idUsuario;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition = "serial")
+	private Long idUsuario;
 
 	private String contrasenia;
 
@@ -42,11 +46,11 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Integer getIdUsuario() {
+	public Long getIdUsuario() {
 		return this.idUsuario;
 	}
 
-	public void setIdUsuario(Integer idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 

@@ -18,7 +18,6 @@ public class Documento implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(columnDefinition = "serial")
 	private Long id_documento;
 	
@@ -30,8 +29,6 @@ public class Documento implements Serializable{
 	
 	@Column
 	private String ubicacion;
-	
-	
 	
 	
 	public Documento() {
@@ -77,7 +74,4 @@ public class Documento implements Serializable{
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-	
-	
-
 }

@@ -13,6 +13,7 @@ public class Persona implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
 	private Long id_persona;
+	
 	@Column
 	private String apellido;
 	@Column
