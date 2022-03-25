@@ -25,10 +25,7 @@ public class Direccion implements Serializable {
 	@JoinColumn(name="id_canton")
 	private Canton canton;
 
-	//bi-directional many-to-one association to Empresa
-	@ManyToOne
-	@JoinColumn(name="id_empresa")
-	private Empresa empresa;
+	
 
 	//bi-directional many-to-one association to Pais
 	@ManyToOne
@@ -88,13 +85,7 @@ public class Direccion implements Serializable {
 		this.canton = canton;
 	}
 
-	public Empresa getEmpresa() {
-		return this.empresa;
-	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
 
 	public Pais getPais() {
 		return this.pais;
