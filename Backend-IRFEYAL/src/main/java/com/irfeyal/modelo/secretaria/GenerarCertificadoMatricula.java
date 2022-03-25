@@ -24,9 +24,9 @@ public class GenerarCertificadoMatricula implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(columnDefinition = "serial")
 	private Long id_generar_certificado_matricula;
+	
 	@Column
 	private int id;
 	@Column

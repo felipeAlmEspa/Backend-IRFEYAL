@@ -10,15 +10,9 @@ INSERT INTO provincia (provincia) VALUES ('AZUAY'), ('LOJA'), ('CAÑAR'), ('COTO
 
 INSERT INTO canton (canton) VALUES ('CUENCA'), ('GIRON'), ('CATAMAYO'), ('AZOGUES'), ('BIBLIAN'), ('GUAYAQUIL'), ('RIOBAMBA'), ('TULCAN'), ('AMBATO'), ('QUITO');
 
-INSERT INTO parroquia (parroquia) VALUES ('BELLAVISTA'), ('EL BATAN'), ('MONAY'), ('SAN BLAS'), ('BORRERO'), ('SAN FRANCISCO'), ('PUNIN'), ('FLORES'), ('BOLIVAR'), ('ROCAFUERTE');
-
+INSERT INTO parroquia (parroquia) VALUES ('BELLAVISTA'), ('EL BATAN'),('MONAY'), ('SAN BLAS'), ('BORRERO'), ('SAN FRANCISCO'), ('PUNIN'), ('FLORES'), ('BOLIVAR'), ('ROCAFUERTE'); 
 
 INSERT INTO rol (descripcion) VALUES ('administrador'), ('coordinador administrativo'), ('coordinador de desarrollo institucional'), ('docente'), ('estudiante'), ('gerente'), ('secretaria'), ('tutor');
 
-
 INSERT INTO genero (genero) VALUES ('MASCULINO'), ('FEMENINO'), ('OTRO');
-
-
-
-
 

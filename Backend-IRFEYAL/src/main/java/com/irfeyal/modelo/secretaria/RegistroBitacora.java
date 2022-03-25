@@ -26,7 +26,6 @@ public class RegistroBitacora implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(columnDefinition = "serial")
 	private Long id_registro_bitacora;
 	
@@ -38,6 +37,8 @@ public class RegistroBitacora implements Serializable{
 	private Timestamp fecha;
 	@Column
 	private Timestamp hora;
+	@Column
+	private String estado;
 	
 	@OneToOne
 	@JoinColumn(name = "id_rolusuario")
@@ -45,7 +46,7 @@ public class RegistroBitacora implements Serializable{
 
 	
 	@OneToOne
-	@JoinColumn(name = "id_registro_bitacora")
+	@JoinColumn(name = "id_documento")
 	private Documento documento;
 	
 	
@@ -53,13 +54,15 @@ public class RegistroBitacora implements Serializable{
 		super();
 	}
 
-	public RegistroBitacora(Long id_registro_bitacora, String solicitante, String emisor, Timestamp fecha, Timestamp hora, RolUsuario rolusuario, Documento documento) {
-		
+	public RegistroBitacora(Long id_registro_bitacora, String solicitante, String emisor, Timestamp fecha,
+			Timestamp hora, String estado, RolUsuario rolusuario, Documento documento) {
+		super();
 		this.id_registro_bitacora = id_registro_bitacora;
 		this.solicitante = solicitante;
 		this.emisor = emisor;
 		this.fecha = fecha;
 		this.hora = hora;
+		this.estado = estado;
 		this.rolusuario = rolusuario;
 		this.documento = documento;
 	}
@@ -118,6 +121,14 @@ public class RegistroBitacora implements Serializable{
 
 	public void setDocumento(Documento documento) {
 		this.documento = documento;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 }
