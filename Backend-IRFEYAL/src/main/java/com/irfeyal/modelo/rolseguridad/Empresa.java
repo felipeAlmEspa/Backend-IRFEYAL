@@ -16,8 +16,6 @@ public class Empresa implements Serializable {
 
 	private String empresa;
 	
-	@OneToOne(mappedBy="direccion")
-	private String id_direccion;
 
 	//bi-directional many-to-one association to CorreoElectronico
 	@OneToMany(mappedBy="empresa")
@@ -83,6 +81,8 @@ public class Empresa implements Serializable {
 		return correoElectronico;
 	}
 
+	
+
 	public List<Direccion> getDireccions() {
 		return this.direccions;
 	}
@@ -91,8 +91,19 @@ public class Empresa implements Serializable {
 		this.direccions = direccions;
 	}
 
+	public Direccion addDireccion(Direccion direccion) {
+		getDireccions().add(direccion);
+		direccion.setEmpresa(this);
 
+		return direccion;
+	}
 
+	public Direccion removeDireccion(Direccion direccion) {
+		getDireccions().remove(direccion);
+		direccion.setEmpresa(null);
+
+		return direccion;
+	}
 
 
 	public Usuario getUsuario() {

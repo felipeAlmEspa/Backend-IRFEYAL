@@ -18,12 +18,6 @@ INSERT INTO rol (descripcion) VALUES ('administrador'), ('coordinador administra
 
 INSERT INTO genero (genero) VALUES ('MASCULINO'), ('FEMENINO'), ('OTRO');
 
-INSERT INTO usuario (id_usuario, contrasenia,est_usuario,usuario,id_persona) VALUES (1, '1234','activo','secre',1);
-INSERT INTO persona(apellido,cedula,fecha_nacimiento,nombre,id_direccion, id_genero) VALUES ('Orellana','200356492','12/12/1996','Laura',1,2);
-INSERT INTO empresa (empresa,id_usuario) VALUES ('irfeyal',1);
-INSERT INTO direccion (av_principal,av_secundaria,id_canton,id_empresa,id_pais,id_parroquia,id_provincia) VALUES ('AV. DE LAS AMERICAS','LUIS CORDERO',1,1,1,1,1);
-
-
 
 
 
