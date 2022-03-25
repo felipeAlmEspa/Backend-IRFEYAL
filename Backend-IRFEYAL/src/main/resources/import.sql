@@ -25,14 +25,6 @@ INSERT INTO direccion (av_principal,av_secundaria,id_canton,id_empresa,id_pais,i
 
 
 
-	
-
-
-
-
-
-
-
 
 
 
