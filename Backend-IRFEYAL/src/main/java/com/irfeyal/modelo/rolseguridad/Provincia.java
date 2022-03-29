@@ -2,21 +2,26 @@ package com.irfeyal.modelo.rolseguridad;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
 @Table(name = "provincia")
+@NamedQuery(name="Provincia.findAll", query="SELECT p FROM Provincia p")
 public class Provincia implements Serializable {
-
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	@Column(name="id_provincia")
 	private Long idProvincia;
 
 	private String provincia;
 
 	//bi-directional many-to-one association to Direccion
+	@JsonIgnore
 	@OneToMany(mappedBy="provincia")
 	private List<Direccion> direccions;
 

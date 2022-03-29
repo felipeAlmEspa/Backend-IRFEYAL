@@ -2,93 +2,83 @@ package com.irfeyal.modelo.rolseguridad;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
 @Table(name = "extension")
+@NamedQuery(name="Extension.findAll", query="SELECT e FROM Extension e")
 public class Extension implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
-	private Long idExtension;
 
-	private String extension;
+	@Id
+	@Column(name="id_extension")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_extension;
+
+	@Column(name="nombre_extension")
+	private String name_extension;
 
 	//bi-directional many-to-one association to CorreoElectronico
-	@OneToMany(mappedBy="extension")
+	@JsonIgnore
+	@OneToMany()
 	private List<CorreoElectronico> correoElectronicos;
 
 	
-
-	//bi-directional many-to-one association to Direccion
-	@ManyToOne
-	@JoinColumn(name="id_direccion")
-	private Direccion direccion;
-
+	@OneToOne()
+	@JoinColumn(name = "id_direccion")
+	private Direccion id_direccion;
 	//bi-directional many-to-one association to Empresa
-	@ManyToOne
+	@JsonIgnore
+	
+	@ManyToOne()
 	@JoinColumn(name="id_empresa")
 	private Empresa empresa;
-
+	
 	//bi-directional many-to-one association to Telefono
-	@OneToMany(mappedBy="extension")
+	@JsonIgnore
+	@OneToMany()
 	private List<Telefono> telefonos;
 
 	public Extension() {
 	}
 
-	public Long getIdExtension() {
-		return this.idExtension;
+	public Long getId_extension() {
+		return id_extension;
 	}
 
-	public void setIdExtension(Long idExtension) {
-		this.idExtension = idExtension;
+	public void setId_extension(Long id_extension) {
+		this.id_extension = id_extension;
 	}
 
-	public String getExtension() {
-		return this.extension;
+	public String getName_extension() {
+		return name_extension;
 	}
 
-	public void setExtension(String extension) {
-		this.extension = extension;
+	public void setName_extension(String name_extension) {
+		this.name_extension = name_extension;
 	}
 
 	public List<CorreoElectronico> getCorreoElectronicos() {
-		return this.correoElectronicos;
+		return correoElectronicos;
 	}
 
 	public void setCorreoElectronicos(List<CorreoElectronico> correoElectronicos) {
 		this.correoElectronicos = correoElectronicos;
 	}
 
-	public CorreoElectronico addCorreoElectronico(CorreoElectronico correoElectronico) {
-		getCorreoElectronicos().add(correoElectronico);
-		correoElectronico.setExtension(this);
-
-		return correoElectronico;
+	public Direccion getId_direccion() {
+		return id_direccion;
 	}
 
-	public CorreoElectronico removeCorreoElectronico(CorreoElectronico correoElectronico) {
-		getCorreoElectronicos().remove(correoElectronico);
-		correoElectronico.setExtension(null);
-
-		return correoElectronico;
-	}
-
-	
-
-	public Direccion getDireccion() {
-		return this.direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
+	public void setId_direccion(Direccion id_direccion) {
+		this.id_direccion = id_direccion;
 	}
 
 	public Empresa getEmpresa() {
-		return this.empresa;
+		return empresa;
 	}
 
 	public void setEmpresa(Empresa empresa) {
@@ -96,25 +86,17 @@ public class Extension implements Serializable {
 	}
 
 	public List<Telefono> getTelefonos() {
-		return this.telefonos;
+		return telefonos;
 	}
 
 	public void setTelefonos(List<Telefono> telefonos) {
 		this.telefonos = telefonos;
 	}
 
-	public Telefono addTelefono(Telefono telefono) {
-		getTelefonos().add(telefono);
-		telefono.setExtension(this);
-
-		return telefono;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public Telefono removeTelefono(Telefono telefono) {
-		getTelefonos().remove(telefono);
-		telefono.setExtension(null);
 
-		return telefono;
-	}
-
+	
 }

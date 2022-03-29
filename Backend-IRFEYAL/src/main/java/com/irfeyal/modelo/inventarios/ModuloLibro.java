@@ -1,5 +1,4 @@
 package com.irfeyal.modelo.inventarios;
-
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -7,19 +6,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
  *
- * @author User
+ * @author Felipe Quichimbo check
  */
 @Entity
 @Table(name = "modulo_libro")
 @NamedQueries({
     @NamedQuery(name = "ModuloLibro.findAll", query = "SELECT m FROM ModuloLibro m"),
-    @NamedQuery(name = "ModuloLibro.findByModulolibroId", query = "SELECT m FROM ModuloLibro m WHERE m.modulolibroId = :modulolibroId"),
+    @NamedQuery(name = "ModuloLibro.findByid_modulo_libro", query = "SELECT m FROM ModuloLibro m WHERE m.id_modulo_libro = :id_modulo_libro"),
     @NamedQuery(name = "ModuloLibro.findByCodModulo", query = "SELECT m FROM ModuloLibro m WHERE m.codModulo = :codModulo"),
     @NamedQuery(name = "ModuloLibro.findByNombreModulo", query = "SELECT m FROM ModuloLibro m WHERE m.nombreModulo = :nombreModulo"),
     @NamedQuery(name = "ModuloLibro.findByCurso", query = "SELECT m FROM ModuloLibro m WHERE m.curso = :curso"),
@@ -30,62 +31,52 @@ public class ModuloLibro implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "modulolibro_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer modulolibroId;
+    private Long id_modulo_libro;
     
     @Basic(optional = false)
     @Column(name = "cod_modulo")
     private int codModulo;
+    
     @Column(name = "nombre_modulo")
     private String nombreModulo;
+    
     @Column(name = "curso")
     private String curso;
+    
     @Column(name = "cantidad")
-    private Long cantidad;
+    private Integer cantidad;
+    
     @Column(name = "numero")
-    private Long numero;
+    private Integer numero;
+    
     @Column(name = "numero_modulo")
     private String numeroModulo;
     
-    
-   // @ManyToOne(fetch = FetchType.LAZY)
-   // private Kit kitId;
+    @JoinColumn(name = "id_kid", referencedColumnName = "id_kid")
+    @ManyToOne(optional = false)
+    private Kit id_kid;
 
     public ModuloLibro() {
     }
 
-    public ModuloLibro(int codModulo, String nombreModulo, String curso, Long cantidad, Long numero,
-			String numeroModulo) {
-		super();
-		this.codModulo = codModulo;
-		this.nombreModulo = nombreModulo;
-		this.curso = curso;
-		this.cantidad = cantidad;
-		this.numero = numero;
-		this.numeroModulo = numeroModulo;
-	}
-
-
-
-
-
-	public ModuloLibro(Integer modulolibroId) {
-        this.modulolibroId = modulolibroId;
+    public ModuloLibro(Long id_modulo_libro) {
+        this.id_modulo_libro = id_modulo_libro;
     }
 
-    public ModuloLibro(Integer modulolibroId, int codModulo) {
-        this.modulolibroId = modulolibroId;
+    public ModuloLibro(Long id_modulo_libro, int codModulo) {
+        this.id_modulo_libro = id_modulo_libro;
         this.codModulo = codModulo;
     }
 
-    public Integer getModulolibroId() {
-        return modulolibroId;
+    public Long getid_modulo_libro() {
+        return id_modulo_libro;
     }
 
-    public void setModulolibroId(Integer modulolibroId) {
-        this.modulolibroId = modulolibroId;
+    public void setid_modulo_libro(Long id_modulo_libro) {
+        this.id_modulo_libro = id_modulo_libro;
     }
 
     public int getCodModulo() {
@@ -112,42 +103,42 @@ public class ModuloLibro implements Serializable {
         this.curso = curso;
     }
 
-    public Long getCantidad() {
-        return cantidad;
-    }
+    public Integer getCantidad() {
+		return cantidad;
+	}
 
-    public void setCantidad(Long cantidad) {
-        this.cantidad = cantidad;
-    }
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
 
-    public Long getNumero() {
-        return numero;
-    }
+	public Integer getNumero() {
+		return numero;
+	}
 
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
 
-    public String getNumeroModulo() {
+	public String getNumeroModulo() {
         return numeroModulo;
     }
 
     public void setNumeroModulo(String numeroModulo) {
         this.numeroModulo = numeroModulo;
     }
-/*
-    public Kit getKitId() {
-        return kitId;
+
+    public Kit getid_kid() {
+        return id_kid;
     }
 
-    public void setKitId(Kit kitId) {
-        this.kitId = kitId;
+    public void setid_kid(Kit id_kid) {
+        this.id_kid = id_kid;
     }
-*/
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (modulolibroId != null ? modulolibroId.hashCode() : 0);
+        hash += (id_modulo_libro != null ? id_modulo_libro.hashCode() : 0);
         return hash;
     }
 
@@ -158,7 +149,7 @@ public class ModuloLibro implements Serializable {
             return false;
         }
         ModuloLibro other = (ModuloLibro) object;
-        if ((this.modulolibroId == null && other.modulolibroId != null) || (this.modulolibroId != null && !this.modulolibroId.equals(other.modulolibroId))) {
+        if ((this.id_modulo_libro == null && other.id_modulo_libro != null) || (this.id_modulo_libro != null && !this.id_modulo_libro.equals(other.id_modulo_libro))) {
             return false;
         }
         return true;
@@ -166,7 +157,7 @@ public class ModuloLibro implements Serializable {
 
     @Override
     public String toString() {
-        return "com.irfeyal.kitmodulo.ModuloLibro[ modulolibroId=" + modulolibroId + " ]";
+        return "com.irfeyal.mapeoirfeyal.ModuloLibro[ id_modulo_libro=" + id_modulo_libro + " ]";
     }
     
 }

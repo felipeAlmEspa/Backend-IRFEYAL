@@ -35,8 +35,8 @@ public class GenerarCertificadoMatricula implements Serializable{
 	private Date fecha;
 	
 	@OneToOne
-	@JoinColumn(name = "id_rolusuario")
-	private RolUsuario rolusuario;
+	@JoinColumn(name = "id_rol_usuario")
+	private RolUsuario id_rol_usuario;
 	
 	@OneToOne
 	@JoinColumn(name = "id_matricula")
@@ -51,13 +51,13 @@ public class GenerarCertificadoMatricula implements Serializable{
 	}
 
 	public GenerarCertificadoMatricula(Long id_generar_certificado_matricula, int id, String rectora, Date fecha,
-			RolUsuario rolusuario, Matricula matricula, Direccion direccion) {
+			RolUsuario id_rol_usuario, Matricula matricula, Direccion direccion) {
 		super();
 		this.id_generar_certificado_matricula = id_generar_certificado_matricula;
 		this.id = id;
 		this.rectora = rectora;
 		this.fecha = fecha;
-		this.rolusuario = rolusuario;
+		this.id_rol_usuario = id_rol_usuario;
 		this.matricula = matricula;
 		this.direccion = direccion;
 	}
@@ -94,12 +94,12 @@ public class GenerarCertificadoMatricula implements Serializable{
 		this.fecha = fecha;
 	}
 
-	public RolUsuario getRolusuario() {
-		return rolusuario;
+	public RolUsuario getid_rol_usuario() {
+		return id_rol_usuario;
 	}
 
-	public void setRolusuario(RolUsuario rolusuario) {
-		this.rolusuario = rolusuario;
+	public void setid_rol_usuario(RolUsuario id_rol_usuario) {
+		this.id_rol_usuario = id_rol_usuario;
 	}
 
 	public Matricula getMatricula() {

@@ -2,43 +2,40 @@ package com.irfeyal.modelo.rolseguridad;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
-/**
- * The persistent class for the canton database table.
- * 
- */
 @Entity
 @Table(name = "canton")
 public class Canton implements Serializable {
-
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
-	private Long id_canton;
+	@Column(name="id_canton")
+	private Long idCanton;
 
-	@Column(name = "canton")
 	private String canton;
 
-	// bi-directional many-to-one association to Direccion
-	@OneToMany(mappedBy = "canton")
+	//bi-directional many-to-one association to Direccion
+	@JsonIgnore
+	@OneToMany(mappedBy="canton")
 	private List<Direccion> direccions;
 
 	public Canton() {
-		super();
 	}
 
 	public Long getIdCanton() {
-		return this.id_canton;
+		return this.idCanton;
 	}
 
 	public void setIdCanton(Long idCanton) {
-		this.id_canton = idCanton;
+		this.idCanton = idCanton;
 	}
 
 	public String getCanton() {

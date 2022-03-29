@@ -2,60 +2,40 @@ package com.irfeyal.modelo.rolseguridad;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
-
-/**
- * The persistent class for the usuario database table.
- * 
- */
 @Entity
+@Table(name = "usuario")
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
-	private Long idUsuario;
-
+	@Column(name="id_usuario")
+	private Long id_usuario;
+	
+	@Column(name="contrasenia")
 	private String contrasenia;
 
 	@Column(name="est_usuario")
 	private String estUsuario;
 
+	@Column(name="usuario")
 	private String usuario;
-
-	
-	//bi-directional many-to-one association to Persona
-	@ManyToOne
-	@JoinColumn(name="id_persona")
-	private Persona persona;
-
-	//bi-directional many-to-one association to Empresa
-	@OneToMany(mappedBy="usuario")
-	private List<Empresa> empresas;
-
-	//bi-directional many-to-one association to RolUsuario
-	@OneToMany(mappedBy="usuario")
-	private List<RolUsuario> rolUsuarios;
 
 	public Usuario() {
 	}
 
-	public Long getIdUsuario() {
-		return this.idUsuario;
+	public Long getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setIdUsuario(Long idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setId_usuario(Long id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	public String getContrasenia() {
-		return this.contrasenia;
+		return contrasenia;
 	}
 
 	public void setContrasenia(String contrasenia) {
@@ -63,7 +43,7 @@ public class Usuario implements Serializable {
 	}
 
 	public String getEstUsuario() {
-		return this.estUsuario;
+		return estUsuario;
 	}
 
 	public void setEstUsuario(String estUsuario) {
@@ -71,64 +51,16 @@ public class Usuario implements Serializable {
 	}
 
 	public String getUsuario() {
-		return this.usuario;
+		return usuario;
 	}
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
-	
-	public Persona getPersona() {
-		return this.persona;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
-	public List<Empresa> getEmpresas() {
-		return this.empresas;
-	}
-
-	public void setEmpresas(List<Empresa> empresas) {
-		this.empresas = empresas;
-	}
-
-	public Empresa addEmpresa(Empresa empresa) {
-		getEmpresas().add(empresa);
-		empresa.setUsuario(this);
-
-		return empresa;
-	}
-
-	public Empresa removeEmpresa(Empresa empresa) {
-		getEmpresas().remove(empresa);
-		empresa.setUsuario(null);
-
-		return empresa;
-	}
-
-	public List<RolUsuario> getRolUsuarios() {
-		return this.rolUsuarios;
-	}
-
-	public void setRolUsuarios(List<RolUsuario> rolUsuarios) {
-		this.rolUsuarios = rolUsuarios;
-	}
-
-	public RolUsuario addRolUsuario(RolUsuario rolUsuario) {
-		getRolUsuarios().add(rolUsuario);
-		rolUsuario.setUsuario(this);
-
-		return rolUsuario;
-	}
-
-	public RolUsuario removeRolUsuario(RolUsuario rolUsuario) {
-		getRolUsuarios().remove(rolUsuario);
-		rolUsuario.setUsuario(null);
-
-		return rolUsuario;
-	}
 
 }

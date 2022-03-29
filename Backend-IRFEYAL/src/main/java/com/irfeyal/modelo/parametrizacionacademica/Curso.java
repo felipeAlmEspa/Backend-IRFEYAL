@@ -36,8 +36,8 @@ public class Curso implements Serializable {
     private Calendar fec_creacion;
 
     @ManyToOne
-    @JoinColumn(name = "idRolusuario", unique = true)
-    private RolUsuario idRolusuario;
+    @JoinColumn(name = "id_rol_usuario", unique = true)
+    private RolUsuario id_rol_usuario;
 
     public Curso() {
         super();
@@ -75,12 +75,12 @@ public class Curso implements Serializable {
         this.fec_creacion = fecha_creacion;
     }
 
-	public RolUsuario getIdRolUsuario() {
-		return idRolusuario;
+	public RolUsuario getid_rol_usuario() {
+		return id_rol_usuario;
 	}
 
-	public void setIdRolusuario(RolUsuario idRolusuario) {
-		this.idRolusuario = idRolusuario;
+	public void setid_rol_usuario(RolUsuario id_rol_usuario) {
+		this.id_rol_usuario = id_rol_usuario;
 	}
 
     

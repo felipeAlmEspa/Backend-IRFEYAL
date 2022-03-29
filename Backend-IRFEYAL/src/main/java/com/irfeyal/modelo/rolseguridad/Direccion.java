@@ -1,18 +1,27 @@
 package com.irfeyal.modelo.rolseguridad;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "direccion")
 public class Direccion implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
-	private Long idDireccion;
+	@Column(name="id_direccion")
+	private Long id_direccion;
 
 	@Column(name="av_principal")
 	private String avPrincipal;
@@ -24,10 +33,6 @@ public class Direccion implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_canton")
 	private Canton canton;
-
-	@ManyToOne
-	@JoinColumn(name="id_empresa")
-	private Empresa empresa;
 
 	//bi-directional many-to-one association to Pais
 	@ManyToOne
@@ -44,27 +49,19 @@ public class Direccion implements Serializable {
 	@JoinColumn(name="id_provincia")
 	private Provincia provincia;
 
-	//bi-directional many-to-one association to Extension
-	@OneToMany(mappedBy="direccion")
-	private List<Extension> extensions;
-
-	//bi-directional many-to-one association to Persona
-	@OneToMany(mappedBy="direccion")
-	private List<Persona> personas;
-
 	public Direccion() {
 	}
 
-	public Long getIdDireccion() {
-		return this.idDireccion;
+	public Long getid_direccion() {
+		return id_direccion;
 	}
 
-	public void setIdDireccion(Long idDireccion) {
-		this.idDireccion = idDireccion;
+	public void setid_direccion(Long id_direccion) {
+		this.id_direccion = id_direccion;
 	}
 
 	public String getAvPrincipal() {
-		return this.avPrincipal;
+		return avPrincipal;
 	}
 
 	public void setAvPrincipal(String avPrincipal) {
@@ -72,7 +69,7 @@ public class Direccion implements Serializable {
 	}
 
 	public String getAvSecundaria() {
-		return this.avSecundaria;
+		return avSecundaria;
 	}
 
 	public void setAvSecundaria(String avSecundaria) {
@@ -80,23 +77,15 @@ public class Direccion implements Serializable {
 	}
 
 	public Canton getCanton() {
-		return this.canton;
+		return canton;
 	}
 
 	public void setCanton(Canton canton) {
 		this.canton = canton;
 	}
 
-	public Empresa getEmpresa() {
-		return this.empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
 	public Pais getPais() {
-		return this.pais;
+		return pais;
 	}
 
 	public void setPais(Pais pais) {
@@ -104,7 +93,7 @@ public class Direccion implements Serializable {
 	}
 
 	public Parroquia getParroquia() {
-		return this.parroquia;
+		return parroquia;
 	}
 
 	public void setParroquia(Parroquia parroquia) {
@@ -112,57 +101,17 @@ public class Direccion implements Serializable {
 	}
 
 	public Provincia getProvincia() {
-		return this.provincia;
+		return provincia;
 	}
 
 	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
 	}
 
-	public List<Extension> getExtensions() {
-		return this.extensions;
-	}
-
-	public void setExtensions(List<Extension> extensions) {
-		this.extensions = extensions;
-	}
-
-	public Extension addExtension(Extension extension) {
-		getExtensions().add(extension);
-		extension.setDireccion(this);
-
-		return extension;
-	}
-
-	public Extension removeExtension(Extension extension) {
-		getExtensions().remove(extension);
-		extension.setDireccion(null);
-
-		return extension;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	
-
-	public List<Persona> getPersonas() {
-		return this.personas;
-	}
-
-	public void setPersonas(List<Persona> personas) {
-		this.personas = personas;
-	}
-
-	public Persona addPersona(Persona persona) {
-		getPersonas().add(persona);
-		persona.setDireccion(this);
-
-		return persona;
-	}
-
-	public Persona removePersona(Persona persona) {
-		getPersonas().remove(persona);
-		persona.setDireccion(null);
-
-		return persona;
-	}
 
 }

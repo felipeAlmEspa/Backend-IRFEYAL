@@ -6,13 +6,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "rol")
+@NamedQuery(name="Rol.findAll", query="SELECT r FROM Rol r")
 public class Rol implements Serializable {
-
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
-	private Long idRol;
+	@Column(name="id_rol")
+	private Long id_rol;
 
 	private String descripcion;
 
@@ -23,12 +24,12 @@ public class Rol implements Serializable {
 	public Rol() {
 	}
 
-	public Long getIdRol() {
-		return this.idRol;
+	public Long getid_rol() {
+		return this.id_rol;
 	}
 
-	public void setIdRol(Long idRol) {
-		this.idRol = idRol;
+	public void setid_rol(Long id_rol) {
+		this.id_rol = id_rol;
 	}
 
 	public String getDescripcion() {

@@ -14,13 +14,12 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="matriculas")
 @NamedQuery(name="Matricula.findAll", query="SELECT m FROM Matricula m")
-
 public class Matricula implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	@Column(name="id_matricula")
 	private Long id_matricula;
 
 	@Column(name="fecha_matricula")
@@ -33,17 +32,17 @@ public class Matricula implements Serializable {
 	//bi-directional many-to-one association to Curso
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_curso")
-	private Curso id_curso;
+	private Curso curso;
 
 	//bi-directional many-to-one association to Modalidad
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_modalidad")
-	private Modalidad id_modalidad;
+	private Modalidad modalidad;
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_usuario")
-	private Usuario id_usuario;
+	private Usuario usuario;
 
 	//bi-directional many-to-one association to Paralelo
 	@OneToOne()
@@ -93,27 +92,27 @@ public class Matricula implements Serializable {
 	}
 
 	public Curso getCurso() {
-		return id_curso;
+		return curso;
 	}
 
 	public void setCurso(Curso curso) {
-		this.id_curso = curso;
+		this.curso = curso;
 	}
 
 	public Modalidad getModalidad() {
-		return id_modalidad;
+		return modalidad;
 	}
 
 	public void setModalidad(Modalidad modalidad) {
-		this.id_modalidad = modalidad;
+		this.modalidad = modalidad;
 	}
 
 	public Usuario getUsuario() {
-		return id_usuario;
+		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.id_usuario = usuario;
+		this.usuario = usuario;
 	}
 
 	public Paralelo getId_paralelo() {

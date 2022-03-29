@@ -1,16 +1,15 @@
 package com.irfeyal.modelo.rolseguridad;
-
 import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
 @Table(name="rol_usuario")
 public class RolUsuario implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	@Column(name="id_rol_usuario")
 	private Long id_rol_usuario;
 
 	private Boolean estado;

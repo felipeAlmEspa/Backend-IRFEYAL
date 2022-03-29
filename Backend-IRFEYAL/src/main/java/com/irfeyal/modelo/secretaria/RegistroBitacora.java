@@ -41,8 +41,8 @@ public class RegistroBitacora implements Serializable{
 	private String estado;
 	
 	@OneToOne
-	@JoinColumn(name = "id_rolusuario")
-	private RolUsuario rolusuario;
+	@JoinColumn(name = "id_rol_usuario")
+	private RolUsuario id_rol_usuario;
 
 	
 	@OneToOne
@@ -55,7 +55,7 @@ public class RegistroBitacora implements Serializable{
 	}
 
 	public RegistroBitacora(Long id_registro_bitacora, String solicitante, String emisor, Timestamp fecha,
-			Timestamp hora, String estado, RolUsuario rolusuario, Documento documento) {
+			Timestamp hora, String estado, RolUsuario id_rol_usuario, Documento documento) {
 		super();
 		this.id_registro_bitacora = id_registro_bitacora;
 		this.solicitante = solicitante;
@@ -63,7 +63,7 @@ public class RegistroBitacora implements Serializable{
 		this.fecha = fecha;
 		this.hora = hora;
 		this.estado = estado;
-		this.rolusuario = rolusuario;
+		this.id_rol_usuario = id_rol_usuario;
 		this.documento = documento;
 	}
 
@@ -107,12 +107,12 @@ public class RegistroBitacora implements Serializable{
 		this.hora = hora;
 	}
 
-	public RolUsuario getRolusuario() {
-		return rolusuario;
+	public RolUsuario getid_rol_usuario() {
+		return id_rol_usuario;
 	}
 
-	public void setRolusuario(RolUsuario rolusuario) {
-		this.rolusuario = rolusuario;
+	public void setid_rol_usuario(RolUsuario id_rol_usuario) {
+		this.id_rol_usuario = id_rol_usuario;
 	}
 
 	public Documento getDocumento() {

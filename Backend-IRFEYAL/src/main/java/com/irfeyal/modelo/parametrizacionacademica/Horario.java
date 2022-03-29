@@ -63,7 +63,7 @@ public class Horario implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_rol_usuario")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private RolUsuario idRolusuario;
+    private RolUsuario id_rol_usuario;
 
     public Horario() {
         super();
@@ -117,12 +117,12 @@ public class Horario implements Serializable{
         this.id_asignatura = id_asignatura;
     }
 
-    public RolUsuario getIdRolUsuario() {
-        return idRolusuario;
+    public RolUsuario getid_rol_usuario() {
+        return id_rol_usuario;
     }
 
-    public void setId_rol_usuario(RolUsuario idRolusuario) {
-        this.idRolusuario = idRolusuario;
+    public void setId_rol_usuario(RolUsuario id_rol_usuario) {
+        this.id_rol_usuario = id_rol_usuario;
     }
 
 	public List<Curso> getListaCursos() {

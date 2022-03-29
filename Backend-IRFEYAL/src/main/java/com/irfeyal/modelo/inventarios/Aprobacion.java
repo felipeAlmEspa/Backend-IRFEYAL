@@ -1,107 +1,82 @@
 package com.irfeyal.modelo.inventarios;
-
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.irfeyal.modelo.rolseguridad.RolUsuario;
+
+/**
+ *
+ * @author Felipe Quichimbo check
+ */
 @Entity
 @Table(name = "aprobacion")
-/*@NamedQueries({
+@NamedQueries({
     @NamedQuery(name = "Aprobacion.findAll", query = "SELECT a FROM Aprobacion a"),
-    @NamedQuery(name = "Aprobacion.findByAprobacionId", query = "SELECT a FROM Aprobacion a WHERE a.aprobacionId = :aprobacionId"),
+    @NamedQuery(name = "Aprobacion.findByid_aprobacion", query = "SELECT a FROM Aprobacion a WHERE a.id_aprobacion = :id_aprobacion"),
     @NamedQuery(name = "Aprobacion.findByObservacionAproba", query = "SELECT a FROM Aprobacion a WHERE a.observacionAproba = :observacionAproba"),
     @NamedQuery(name = "Aprobacion.findByEstadoAproba", query = "SELECT a FROM Aprobacion a WHERE a.estadoAproba = :estadoAproba"),
     @NamedQuery(name = "Aprobacion.findByDetalleControl", query = "SELECT a FROM Aprobacion a WHERE a.detalleControl = :detalleControl"),
     @NamedQuery(name = "Aprobacion.findByFechaAprobacion", query = "SELECT a FROM Aprobacion a WHERE a.fechaAprobacion = :fechaAprobacion"),
-    @NamedQuery(name = "Aprobacion.findByFechaControl", query = "SELECT a FROM Aprobacion a WHERE a.fechaControl = :fechaControl")})*/
+    @NamedQuery(name = "Aprobacion.findByFechaControl", query = "SELECT a FROM Aprobacion a WHERE a.fechaControl = :fechaControl")})
 public class Aprobacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @Column(name = "aprobacion_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer aprobacionId;
+    @Basic(optional = false)
+    @Column(name = "id_aprobacion")
+    private Long id_aprobacion;
     
     @Column(name = "observacion_aproba")
     private String observacionAproba;
+    
     @Column(name = "estado_aproba")
     private Boolean estadoAproba;
+    
     @Column(name = "detalle_control")
     private String detalleControl;
+    
     @Column(name = "fecha_aprobacion")
     @Temporal(TemporalType.DATE)
     private Date fechaAprobacion;
+    
     @Column(name = "fecha_control")
     @Temporal(TemporalType.DATE)
     private Date fechaControl;
-    @Column(name = "id_rolu_admin")
-    private Integer id_rolu_admin;
-
     
-    
-   /* 
-    @OneToOne()
-    @JoinColumn(name = "id_rolu_admin")
-    private RolUsuario id_rolu_admin = new RolUsuario();*/
-    
-    
-    
-    
-    /*
-    @OneToOne()
-    @JoinColumn(name = "aprobacion_id")
-    private IngresoKit ingresoKit = new IngresoKit();
-    
-    */
-    
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "aprobacionId")
-    //private Collection<EntregaKit> entregaKitCollection;
-  /*  
-    @JoinColumn(name = "id_rolu_admin", referencedColumnName = "id_rolusuario")
-    @ManyToOne(optional = false)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aprobacionId")
-    private Collection<IngresoKit> ingresoKitCollection;
-    
-    @JoinColumn(name = "id_rolu_admin", referencedColumnName = "id_rolusuario")
+    @JoinColumn(name = "id_rol_usuario", referencedColumnName = "id_rol_usuario")
     @ManyToOne(optional = false)
     private RolUsuario idRoluAdmin;
-    */
-    
+
     public Aprobacion() {
     }
-    
-	public Aprobacion(Integer aprobacionId, String observacionAproba, Boolean estadoAproba, String detalleControl,
-			Date fechaAprobacion, Date fechaControl, Integer id_rolu_admin) {
-		super();
-		this.aprobacionId = aprobacionId;
-		this.observacionAproba = observacionAproba;
-		this.estadoAproba = estadoAproba;
-		this.detalleControl = detalleControl;
-		this.fechaAprobacion = fechaAprobacion;
-		this.fechaControl = fechaControl;
-		this.id_rolu_admin = id_rolu_admin;
-	}
 
-
-	public Aprobacion(Integer aprobacionId) {
-        this.aprobacionId = aprobacionId;
+    public Aprobacion(Long id_aprobacion) {
+        this.id_aprobacion = id_aprobacion;
     }
 
-    public Integer getAprobacionId() {
-        return aprobacionId;
+    public Long getid_aprobacion() {
+        return id_aprobacion;
     }
 
-    public void setAprobacionId(Integer aprobacionId) {
-        this.aprobacionId = aprobacionId;
+    public void setid_aprobacion(Long id_aprobacion) {
+        this.id_aprobacion = id_aprobacion;
     }
 
     public String getObservacionAproba() {
@@ -143,35 +118,7 @@ public class Aprobacion implements Serializable {
     public void setFechaControl(Date fechaControl) {
         this.fechaControl = fechaControl;
     }
-    
-    
-    
-    public Integer getId_rolu_admin() {
-		return id_rolu_admin;
-	}
 
-	public void setId_rolu_admin(Integer id_rolu_admin) {
-		this.id_rolu_admin = id_rolu_admin;
-	}
-
-	/*
-    
-public RolUsuario getId_rolu_admin() {
-		return id_rolu_admin;
-	}
-
-	public void setId_rolu_admin(RolUsuario id_rolu_admin) {
-		this.id_rolu_admin = id_rolu_admin;
-	}
-
-	
-    public Collection<EntregaKit> getEntregaKitCollection() {
-        return entregaKitCollection;
-    }
-
-    public void setEntregaKitCollection(Collection<EntregaKit> entregaKitCollection) {
-        this.entregaKitCollection = entregaKitCollection;
-    }
 
     public RolUsuario getIdRoluAdmin() {
         return idRoluAdmin;
@@ -181,26 +128,10 @@ public RolUsuario getId_rolu_admin() {
         this.idRoluAdmin = idRoluAdmin;
     }
 
-    public Collection<IngresoKit> getIngresoKitCollection() {
-        return ingresoKitCollection;
-    }
-
-    public void setIngresoKitCollection(Collection<IngresoKit> ingresoKitCollection) {
-        this.ingresoKitCollection = ingresoKitCollection;
-    }
-
-    public IngresoKit getIngresoKit() {
-		return ingresoKit;
-	}
-
-	public void setIngresoKit(IngresoKit ingresoKit) {
-		this.ingresoKit = ingresoKit;
-	}
-*/
-	@Override
+    @Override
     public int hashCode() {
         int hash = 0;
-        hash += (aprobacionId != null ? aprobacionId.hashCode() : 0);
+        hash += (id_aprobacion != null ? id_aprobacion.hashCode() : 0);
         return hash;
     }
 
@@ -211,7 +142,7 @@ public RolUsuario getId_rolu_admin() {
             return false;
         }
         Aprobacion other = (Aprobacion) object;
-        if ((this.aprobacionId == null && other.aprobacionId != null) || (this.aprobacionId != null && !this.aprobacionId.equals(other.aprobacionId))) {
+        if ((this.id_aprobacion == null && other.id_aprobacion != null) || (this.id_aprobacion != null && !this.id_aprobacion.equals(other.id_aprobacion))) {
             return false;
         }
         return true;
@@ -219,7 +150,7 @@ public RolUsuario getId_rolu_admin() {
 
     @Override
     public String toString() {
-        return "com.irfeyal.ingresokit.resources.Aprobacion[ aprobacionId=" + aprobacionId + " ]";
+        return "com.irfeyal.mapeoirfeyal.Aprobacion[ id_aprobacion=" + id_aprobacion + " ]";
     }
     
 }

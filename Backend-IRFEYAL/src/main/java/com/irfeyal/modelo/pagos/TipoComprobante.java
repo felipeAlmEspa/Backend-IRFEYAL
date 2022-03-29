@@ -33,19 +33,19 @@ public class TipoComprobante implements Serializable {
 	private List<Periodo> id_periodo;
 
 	@OneToMany()
-	@JoinColumn(name = "kit_id")
-	private List<Kit> kit_id;
+	@JoinColumn(name = "id_kid")
+	private List<Kit> id_kid;
 
 	public TipoComprobante() {
 
 	}
 
-	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, List<Periodo> id_periodo, List<Kit> kit_id) {
+	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, List<Periodo> id_periodo, List<Kit> id_kid) {
 		super();
 		this.id_tipo_comprobante = id_tipo_comprobante;
 		this.concepto_pago = concepto_pago;
 		this.id_periodo = id_periodo;
-		this.kit_id = kit_id;
+		this.id_kid = id_kid;
 	}
 
 	public Long getIdTipoComprobante() {
@@ -65,11 +65,11 @@ public class TipoComprobante implements Serializable {
 	}
 
 	public List<Kit> getKit() {
-		return kit_id;
+		return id_kid;
 	}
 
-	public void setKit(List<Kit> kit_id) {
-		this.kit_id = kit_id;
+	public void setKit(List<Kit> id_kid) {
+		this.id_kid = id_kid;
 	}
 
 	public List<Periodo> getId_periodo() {

@@ -39,8 +39,8 @@ private static final long serialVersionUID = 1L;
 	private String rectora;
 	
 	@OneToOne
-	@JoinColumn(name="id_rolusuario")
-	private RolUsuario rolusuario;
+	@JoinColumn(name="id_rol_usuario")
+	private RolUsuario id_rol_usuario;
 	
 	@OneToOne
 	@JoinColumn(name="id_registro")
@@ -55,7 +55,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	public GenerarCertificadoPromocion(Long id_generar_certificado_promocion, float promedio_general_num, String promedio_general_let, 
-			String descripcion, Date fecha, String rectora, RolUsuario rolusuario, Registro registro, Curso curso) {
+			String descripcion, Date fecha, String rectora, RolUsuario id_rol_usuario, Registro registro, Curso curso) {
 
 		this.id_generar_certificado_promocion = id_generar_certificado_promocion;
 		this.promedio_general_num = promedio_general_num;
@@ -63,7 +63,7 @@ private static final long serialVersionUID = 1L;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.rectora = rectora;
-		this.rolusuario = rolusuario;
+		this.id_rol_usuario = id_rol_usuario;
 		this.registro = registro;
 		this.curso = curso;
 	}
@@ -116,12 +116,12 @@ private static final long serialVersionUID = 1L;
 		this.rectora = rectora;
 	}
 
-	public RolUsuario getRolusuario() {
-		return rolusuario;
+	public RolUsuario getid_rol_usuario() {
+		return id_rol_usuario;
 	}
 
-	public void setRolusuario(RolUsuario rolusuario) {
-		this.rolusuario = rolusuario;
+	public void setid_rol_usuario(RolUsuario id_rol_usuario) {
+		this.id_rol_usuario = id_rol_usuario;
 	}
 
 	public Registro getRegistro() {
