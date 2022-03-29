@@ -15,7 +15,7 @@ import com.irfeyal.modelo.matricula.Estudiante;
 
 @Entity
 @Table(name = "asistencia")
-
+//pueba
 public class Asistencia implements Serializable {
 
 	private static final long serialVersionUID = 1L;
